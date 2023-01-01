@@ -1,0 +1,94 @@
+//PHP
+Q1)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><center>
+    <style>
+        body{background-color: yellow;}
+
+
+        fieldset{background-color: turquoise;}
+        
+        h2{font-size: 4vmin;color: red;}
+        
+        
+        .button {
+                     background-color: #4CAF50; /* Green */
+                        border: none;
+                        color: white;
+                        padding: 5px 7px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 12px;
+                        margin: 4px 2px;
+                        cursor: pointer;
+}
+.button2 {background-color: blue;
+    border: none;
+    color: white;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;}
+    </style>
+
+
+<body><center>
+    <h2>Project Management</h2>
+    <fieldset style="width: 20%;">
+        <ul style="list-style-type: none;">
+        <li> Project Name&nbsp;<input type="txt" placeholder="project name"></li><br>
+        <li>Assigned to&nbsp; <select name="Names" id="nm" form="frmlogin">
+            <option value="Er Merry Petision">Er Merry Petision</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+          </select></li><br>
+          <li> Start Date&nbsp;<input type="date" placeholder="project name"></li><br>
+          <li> End Date&nbsp;<input type="date" placeholder="project name"></li><br>
+          <li>Priority <input type="radio">High
+            <input type="radio">Average
+            <input type="radio">Low
+        
+        </li><br>
+        <li> Description&nbsp;<textarea placeholder="type here..."></textarea><br>
+        
+        <button class="button">Submit</div> 
+            <button class="button2">reset</div> 
+    </body></center>
+    </fieldset> 
+</html>
+
+
+
+
+
+//DS
+Q2A)
+ import pandas as pd
+import matplotlib.pyplot as plt
+d = pd.read_csv('C:\\Users\\DELL\\Untitled Folder\\Iris.csv')
+ax=plt.subplots(1,1,figsize=(10,8)) //defines size of chart area
+d['Species'].value_counts().plot.pie() //counts distinct values in dataset
+plt.title("Iris Species %")
+plt.show()
+
+Q2B)
+ import pandas as p
+df = pd.read_csv('C:\\Users\\DELL\\winequality-red.csv')
+df.shape # no.of rows & cols
+df.describe() #stats data
+df.info() #features
+df.dtypes
+
+
+
