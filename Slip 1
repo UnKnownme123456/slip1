@@ -1,94 +1,123 @@
-//PHP
 Q1)
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head><center>
-    <style>
-        body{background-color: yellow;}
-
-
-        fieldset{background-color: turquoise;}
-        
-        h2{font-size: 4vmin;color: red;}
-        
-        
-        .button {
-                     background-color: #4CAF50; /* Green */
-                        border: none;
-                        color: white;
-                        padding: 5px 7px;
-                        text-align: center;
-                        text-decoration: none;
-                        display: inline-block;
-                        font-size: 12px;
-                        margin: 4px 2px;
-                        cursor: pointer;
+#include<stdio.h>
+int A[10][10], M[10][10], N[10][10];
+int AV[10], Safe[10], Finish[10], R[10][10], nor, nop;
+void AcceptData(int X[][10])
+{
+int i, j;
+for (i = 0; i < nop; i++)
+{
+printf("P%d\n", i);
+for (j = 0; j < nor; j++)
+{
+printf("%c:", 65 + j); scanf("%d", &X[i][j]);
 }
-.button2 {background-color: blue;
-    border: none;
-    color: white;
-    padding: 5px 7px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    cursor: pointer;}
-    </style>
+}
+}
+void AcceptAvailable()
+{
+int i;
+for (i = 0; i < nor; i++)
+{
+printf("%c:", 65 + i);
+scanf("%d", &AV[i]);
+}
+}
+void AcceptRequest(int R[][10])
+{
+int i;
+for (i = 0; i < nor; i++)
+{
+printf("%c:", 65 + i);
+scanf("%d", &R[i]);
+}
+}
+void DisplayData()
+{ 
+int i, j; printf("\n\tAllocation\t\tMax\t\tNeed\n"); printf("\t");
+for (i = 0; i < 3; i++)
+{
+for (j = 0; j < nor; j++)
+{
+printf("%4c", 65 + j);
+}
+printf("\t");
+}
+for (i = 0; i < nop; i++) 
+{
+printf("\nP%d\t", i);
+for (j = 0; j < nor; j++)
+{
+printf("%4d", A[i][j]);
+}
+printf("\t");
+for (j = 0; j < nor; j++)
+{
+printf("%4d", M[i][j]);
+}
+printf("\t");
+for (j = 0; j < nor; j++) printf("%4d", N[i][j]);
+}
+printf("\nAvailable\n"); for (j = 0; j < nor; j++)
+{
+printf("%4d", AV[j]);
+}
+}
+void CalcNeed()
+{
+int i, j;
+for (i = 0; i < nop; i++)
+{
+for (j = 0; j < nor; j++)
+{
+N[i][j] = M[i][j] - A[i][j];
+}
+}
+}
+int CheckNeed(int pno)
+{
+int i;
+for (i = 0; i < nor; i++)
+{
+if (N[pno][i] > AV[i])
+{
+return 0;
+}
+}
+return 1;
+}
+int main()
+{
+printf("\nEnter Number of Process :"); scanf("%d", &nop);
+printf("\nEnter Number of Resources :"); scanf("%d", &nor);
+printf("Enter Allocation\n"); AcceptData(A);
+printf("Enter MAX Requirement\n"); AcceptData(M);
+printf("Enter Availability\n"); AcceptAvailable();
+CalcNeed(); DisplayData();
+}
 
+Q2)
 
-<body><center>
-    <h2>Project Management</h2>
-    <fieldset style="width: 20%;">
-        <ul style="list-style-type: none;">
-        <li> Project Name&nbsp;<input type="txt" placeholder="project name"></li><br>
-        <li>Assigned to&nbsp; <select name="Names" id="nm" form="frmlogin">
-            <option value="Er Merry Petision">Er Merry Petision</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-          </select></li><br>
-          <li> Start Date&nbsp;<input type="date" placeholder="project name"></li><br>
-          <li> End Date&nbsp;<input type="date" placeholder="project name"></li><br>
-          <li>Priority <input type="radio">High
-            <input type="radio">Average
-            <input type="radio">Low
-        
-        </li><br>
-        <li> Description&nbsp;<textarea placeholder="type here..."></textarea><br>
-        
-        <button class="button">Submit</div> 
-            <button class="button2">reset</div> 
-    </body></center>
-    </fieldset> 
-</html>
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+ int RQ[100],i,n,TotalHeadMoment=0,initial;
+ printf("Enter the number of Requests\n");
+ scanf("%d",&n);
+ printf("Enter the Requests sequence\n");
+ for(i=0;i<n;i++)
+ scanf("%d",&RQ[i]);
+ printf("Enter initial head position\n");
+ scanf("%d",&initial);
+ // logic for FCFS disk scheduling
+ for(i=0;i<n;i++)
+ {
+ TotalHeadMoment=TotalHeadMoment+abs(RQ[i]-initial);
+ initial=RQ[i];
+ }
 
+ printf("Total head moment is %d",TotalHeadMoment);
+ return 0;
 
-
-
-
-//DS
-Q2A)
- import pandas as pd
-import matplotlib.pyplot as plt
-d = pd.read_csv('C:\\Users\\DELL\\Untitled Folder\\Iris.csv')
-ax=plt.subplots(1,1,figsize=(10,8)) //defines size of chart area
-d['Species'].value_counts().plot.pie() //counts distinct values in dataset
-plt.title("Iris Species %")
-plt.show()
-
-Q2B)
- import pandas as p
-df = pd.read_csv('C:\\Users\\DELL\\winequality-red.csv')
-df.shape # no.of rows & cols
-df.describe() #stats data
-df.info() #features
-df.dtypes
-
-
-
+}
